@@ -1,0 +1,26 @@
+
+#!/usr/bin/env zsh
+
+#brew ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH";
+
+# OpenSSL
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH";
+
+# homebrew bins
+export PATH="/usr/local/sbin:$PATH";
+
+# Android platform tools
+export PATH="/Users/sri/.sdkman/candidates/android/platform-tools:$PATH";
+
+# Vscode Insiders
+export PATH="/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin:$PATH";
+
+# ESP-IDF tools
+export PATH="/Users/sri/Documents/work/iot/esp-idf/bin:$PATH";
+
+# Nordic binaries
+export PATH="/Users/sri/.local/bin:$PATH";
+
+# Flutter global packages
+export PATH="/usr/local/Caskroom/flutter/1.22.0/flutter/.pub-cache/bin:$PATH";

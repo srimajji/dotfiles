@@ -1,0 +1,35 @@
+logs/
+out/
+node_modules/
+npm-debug.log.*
+coverage/
+*.classpath
+*.project
+*.log
+.idea/
+.slcache/
+.DS_Store
+*.override.yml
+*.iml
+
+	.CFUserTextEncoding
+	.config/gh/
+	.config/iterm2/
+	.docker/
+	.dotfiles/
+	.local/
+	.oh-my-zsh/
+	.path
+	.viminfo
+	.z
+	.zprofile
+	.zsh_history
+	.zshrc_bak
+	Desktop/
+	Documents/
+	Downloads/
+	Library/
+	Movies/
+	Music/
+	Pictures/
+	Public/
