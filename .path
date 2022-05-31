@@ -24,3 +24,6 @@ export PATH="/Users/sri/.local/bin:$PATH";
 
 # Flutter global packages
 export PATH="/usr/local/Caskroom/flutter/1.22.0/flutter/.pub-cache/bin:$PATH";
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

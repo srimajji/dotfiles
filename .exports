@@ -22,7 +22,6 @@
 # SOFTWARE.
 
 export EDITOR="/usr/local/bin/nvim"
-export NVM_DIR="$HOME/.nvm"
 
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
@@ -93,8 +92,7 @@ export JAVA_OPTS=-Dstringchararrayaccessor.disabled=true
 export ANDROID_HOME="~/.sdkman/candidates/android/sdk"
 
 # Set AWS profile
-export AWS_DEFAULT_PROFILE=sandbox
-export AWS_PROFILE=sandbox
+export AWS_PROFILE=default
 
 # Set golang
 # https://github.com/stefanmaric/g
@@ -104,3 +102,18 @@ export GOPATH=~/Documents/golang
 # Flutter
 export CHROME_EXECUTABLE="/Applications/Microsoft Edge Dev.app/Contents/MacOS/Microsoft Edge Dev"
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/sri/.sdkman"
+[[ -s "/Users/sri/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/sri/.sdkman/bin/sdkman-init.sh"
+
+
+# Golang
+export GOPATH="$HOME/Documents/golang"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+#Nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
