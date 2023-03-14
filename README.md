@@ -14,8 +14,8 @@
              This repository is the collection of configurations that I learned over
              time and still use for my  daily work. The repository contains  configs
              files for vim,  tmux and etc.  This reposiotry also contains a file for
-             automating the setup of  your development machine by using xcode tools,
-             brew.sh and kalkayan/dotfiles.
+             automating the setup of my own development machine by using xcode tools,
+             brew.sh and srimajji/dotfiles.
              -----------------------------------------------------------------------
     
 '
@@ -23,7 +23,7 @@
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 
-There is something fascinating about customizing your operating system through dotfiles. This repository is the collection of configurations that I learned over time and still use for my daily work.
+This repository is the collection of configurations that I initially forked from kalkayan/dotfiles. Over time I added my custom configurations that are more specific to my own development environment.
 
 ***Recommended** reading about managing and sharing dotfiles elegently - [Setting up a Development Machine (Series of 3 parts)](https://engineering.kalkayan.io/posts/setting-up-a-development-machine-part-3/)*
 
@@ -174,17 +174,6 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 
 <img width="1424" alt="Screenshot 2021-05-15 at 2 39 56 AM" src="https://user-images.githubusercontent.com/73003119/118331880-da40da00-b526-11eb-9979-98688604968f.png">
 
+## Credit
 
-
-
-
-## Contributing to dotfiles
-
-Suggestions / Improvements or any other helpful trick is always welcome, Please raise a PR with some context or any helpful links.
-
-Feel free to reach me out at [rec.manish.sahani@gmail.com](mailto:rec.manish.sahani@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/manishsahani).
-
-> I'm currently working on documenting this and creating an amazing development distribution, stay connected! thanks.
-
-<!-- 
-> The article mainly applies to macOS and debians, but Improvements or contributions for other platforms are more than welcome.  -->
+All of the initial credit goes to [kalkayan/dotfiles](https://github.com/kalkayan/dotfiles).
