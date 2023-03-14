@@ -102,7 +102,7 @@ ZSH_THEME="awesomepanda"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-z docker brew macOS git)
+plugins=(fzf zsh-z docker brew macOS git)
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
@@ -142,4 +142,9 @@ eval "$(pyenv init --path)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/sri/.sdkman"
 [[ -s "/Users/sri/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/sri/.sdkman/bin/sdkman-init.sh"
+
+## [Completion] 
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/sri/.dart-cli-completion/zsh-config.zsh ]] && . /Users/sri/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
 
