@@ -210,5 +210,5 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # homebrew - pyenv warning fix
 # https://github.com/pyenv/pyenv/issues/106
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 

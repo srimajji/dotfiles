@@ -5,3 +5,6 @@ pyenv
 n
 git
 gh
+php
+composer
+fzf
