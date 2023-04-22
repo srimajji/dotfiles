@@ -2,9 +2,10 @@ openssl
 zsh
 zsh-syntax-highlighting
 pyenv
-n
+nvm
 git
 gh
 php
 composer
 fzf
+ngrok

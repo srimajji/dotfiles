@@ -31,7 +31,7 @@ function k__helper_is_git_repo {
 
 function k__prompt_user_info {
     echo '%F{37}%n%f'
-} 
+}
 
 function k__prompt_check_node {
     [ -d "node_modules" 2>/dev/null ] && [ "$(jq --help 2>/dev/null)" ] && echo " $(jq -r '.version' package.json)"
@@ -47,7 +47,7 @@ function get_git_info {
 
 # Find the git branch
 function k__prompt_git_info {
-    [ "$(k__helper_is_git_repo)" ] && echo "%F{7}(%F{$(k__helper_resolve_git_color)}$(get_git_info)%F{7})" || echo '' 
+    [ "$(k__helper_is_git_repo)" ] && echo "%F{7}(%F{$(k__helper_resolve_git_color)}$(get_git_info)%F{7})" || echo ''
 }
 
 function _resolve_fzf_colorscheme {
