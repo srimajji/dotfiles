@@ -1,3 +1,25 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
+
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+fi
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
 # Load and source FZF configs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -8,18 +30,6 @@ for file in ~/.{path,functions,exports,extra,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -76,14 +86,19 @@ ZSH_THEME="awesomepanda"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
+# Which plugins would you like to load?s
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf z docker brew macOS git)
+plugins=(fzf z docker brew macOS git direnv)
 
-source $ZSH/oh-my-zsh.sh
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 
 # User configuration
 
@@ -108,3 +123,28 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Check ~/.aliases
+
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
+# # devenv
+eval "$(direnv hook zsh)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/thebear/.dart-cli-completion/zsh-config.zsh ]] && . /Users/thebear/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+# eval "$(starship init zsh)"
+
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH/oh-my-zsh.sh
