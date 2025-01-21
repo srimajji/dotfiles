@@ -28,9 +28,9 @@
 Author:      Manish Sahani <rec.manish.sahani@gmail.com>
 URL:         https://development.kalkayan.io (original project)
 
-Description: This script is a part of kalkayan's development distribution. The 
-             purpose of this script is to automate the setup related tasks. To 
-             get started with this distribution, Please use the the following 
+Description: This script is a part of kalkayan's development distribution. The
+             purpose of this script is to automate the setup related tasks. To
+             get started with this distribution, Please use the the following
              resources:
 
              [1] Original project - https://zsh.kalkayan.io
@@ -44,29 +44,29 @@ Description: This script is a part of kalkayan's development distribution. The
 # Load the variables in the current from the local vars.sh file if present under
 # config otherwise read from the fallback file at github.
 [ -f $HOME/.config/zsh/vars.sh  ] && source $HOME/.config/zsh/vars.sh  \
-                                  || source /dev/stdin <<< "$(curl https://raw.githubusercontent.com/kalkayan/dotfiles/main/.config/zsh/vars.sh)"
+                                  || source /dev/stdin <<< "$(curl https://raw.githubusercontent.com/srimajji/dotfiles/main/.config/zsh/vars.sh)"
 
 
-# Load utility functions from the utils.sh file (where all the heavy lifting 
+# Load utility functions from the utils.sh file (where all the heavy lifting
 # installation code is written) otherwise read them from the fallback file.
 [ -f $HOME/.config/zsh/utils.sh ] && source $HOME/.config/zsh/utils.sh \
-                                  || source /dev/stdin <<< "$(curl https://raw.githubusercontent.com/kalkayan/dotfiles/main/.config/zsh/utils.sh)"
+                                  || source /dev/stdin <<< "$(curl https://raw.githubusercontent.com/srimajji/dotfiles/main/.config/zsh/utils.sh)"
 
 
 # Print the script banner
 print $PRIMARY '
-                                           _               
-                                          | |              
-  _ __ ___   __ _  ___ ___  ___   ___  ___| |_ _   _ _ __  
- | |_ ` _ \ / _` |/ __/ _ \/ __| / __|/ _ \ __| | | | |_ \ 
+                                           _
+                                          | |
+  _ __ ___   __ _  ___ ___  ___   ___  ___| |_ _   _ _ __
+ | |_ ` _ \ / _` |/ __/ _ \/ __| / __|/ _ \ __| | | | |_ \
  | | | | | | (_| | (_| (_) \__ \ \__ \  __/ |_| |_| | |_) |
- |_| |_| |_|\__,_|\___\___/|___/ |___/\___|\__|\__,_| .__/ 
-                                                    | |    
-                                                    |_|    
+ |_| |_| |_|\__,_|\___\___/|___/ |___/\___|\__|\__,_| .__/
+                                                    | |
+                                                    |_|
 '
 
 
-# Check if help option is present in the provided arguments, if so print the 
+# Check if help option is present in the provided arguments, if so print the
 # usage and available option and exit otherwise proceed with the script
 [[ "$@" =~ "$OPT_HELP" ]] && print_help || print_banner && ask_password
 
@@ -77,7 +77,7 @@ print $PRIMARY '
     install_xcode
 
 
-# Install brew.sh (system package manager for your machine) if already not 
+# Install brew.sh (system package manager for your machine) if already not
 # installed. This will be used to install other binaries and applications.
 [[ "$@" =~ "$OPT_SETUP_NEW" ]] || [[ "$@" =~ "$OPT_INSTALL_BREW"  ]] && \
     install_brew
@@ -105,7 +105,7 @@ print $PRIMARY '
     install_casks $VAR_BREW_CASKS
 
 
-# Post-Installation deals with the setup of specific binaries after 
+# Post-Installation deals with the setup of specific binaries after
 # installation.
 [[ "$@" =~ "$OPT_SETUP_NEW" ]] || [[ "$@" =~ "$OPT_INSTALL_BINS"  ]] && \
     . $HOME/.config/zsh/post_installation.sh
