@@ -97,7 +97,7 @@ plugins=(fzf z docker brew macOS git direnv)
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
 
 # User configuration
@@ -140,11 +140,10 @@ eval "$(direnv hook zsh)"
 
 # eval "$(starship init zsh)"
 
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/thedragon/.lmstudio/bin"
