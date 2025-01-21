@@ -39,7 +39,7 @@ First fork the repository, review the files and code, and remove code that you d
 
 ```bash
 # after forking replace the <username> with your github handle
-git clone --bare https://github.com/<username>/dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/srimajji/dotfiles.git $HOME/.dotfiles
 ````
 
 Notice the `--bare` flag, this the clones repository as a bare repository. Bare repository are special in a way that they omit working directory, therefore to use a bare repository, first we need to define the following.
@@ -74,7 +74,7 @@ Finally source the `.zshrc` or `.bashrc` by doing `source ~/.zshrc` and Voila! T
 This method of managing and sharing has various advantages some of them are shown below:
 
 **1. Keep the dofitles versioned, (basically all the pros of using git)**
-At this point, all your configuration files are being tracked, and you can easily use the `dotfiles` command ([see this line in .aliases](https://github.com/kalkayan/dotfiles/blob/main/.aliases#L69)) to manage the repository, some examples are:-
+At this point, all your configuration files are being tracked, and you can easily use the `dotfiles` command ([see this line in .aliases](https://github.com/srimajji/dotfiles/blob/main/.aliases#L69)) to manage the repository, some examples are:-
 ```bash
 # to check the version history 
 dotfiles log
@@ -116,7 +116,7 @@ dotfiles checkout work
 The repository comes with a bash script (`setup`) to automate the installation of all the binaries and applications. Depending on the platform the setup file will changes for example - for macos it uses `brew` and for ubuntu it uses `snap` or `apt-get`. In any case open the `setup` file and update the code according to your needs.
 
 ```
-curl -fsSL https://raw.githubusercontent.com/kalkayan/dotfiles/main/setup | zsh -s -- --new-machine
+curl -fsSL https://raw.githubusercontent.com/srimajji/dotfiles/main/setup | zsh -s -- --new-machine
 ```
 
 ### Macos 
