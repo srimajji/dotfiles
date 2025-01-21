@@ -135,7 +135,7 @@ eval "$(direnv hook zsh)"
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/thebear/.dart-cli-completion/zsh-config.zsh ]] && . /Users/thebear/.dart-cli-completion/zsh-config.zsh || true
+[[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
 # eval "$(starship init zsh)"

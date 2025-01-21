@@ -28,7 +28,7 @@ function print () {
     [ $# -eq 2 ] && echo -e "$1$2\033[0m" || echo "$1"
 }
 
-# 
+#
 function install_xcode () {
     print $SECONDARY "\nVerifying xcode command line tools installation"
 
@@ -74,8 +74,14 @@ function print_banner () {
 
 
 function install_brew () {
-    [ ! -f "`which brew`" ] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
-                            || brew update && print $SECONDARY "$(brew --version | head -1) is already installed."
+    if [ ! -f "`which brew`" ]; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+        brew update
+        print $SECONDARY "$(brew --version | head -1) is already installed."
+    fi
 }
 
 
@@ -102,12 +108,12 @@ function setup_dotfiles () {
     # therefore, first, we need to define some arguments for the git command. The
     # location for the dotfiles is under $HOME directory.
     alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-    
+
     alias
 
     # Bring the dotfiles from hosted repository if not already present
     if [ ! -d "$HOME/.dotfiles" ]; then
-        /usr/bin/git clone --bare https://github.com/kalkayan/dotfiles.git $HOME/.dotfiles
+        /usr/bin/git clone --bare https://github.com/srimajji/dotfiles.git $HOME/.dotfiles
     fi
 
     # Reset the unstagged changes before updating (TODO: experiment with stash)
