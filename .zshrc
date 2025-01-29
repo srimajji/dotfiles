@@ -140,10 +140,7 @@ eval "$(direnv hook zsh)"
 
 # eval "$(starship init zsh)"
 
-
-# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/thedragon/.lmstudio/bin"

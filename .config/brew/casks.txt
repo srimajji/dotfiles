@@ -15,6 +15,7 @@ raycast
 slack
 spotify
 vscodium
-visual-studio-code
 visual-studio-code@insiders
 zen-browser@twilight
+tailscale
+windsurf
