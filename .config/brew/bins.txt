@@ -1,6 +1,7 @@
 awscli
 composer
 deno
+screenpipe
 direnv
 fzf
 gh

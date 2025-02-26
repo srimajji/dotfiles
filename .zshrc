@@ -91,7 +91,8 @@ unset file;
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf z docker brew macOS git direnv)
+## git clone https://github.com/matthieusb/zsh-sdkman.git ~/.oh-my-zsh/custom/plugins/zsh-sdkman
+plugins=(aws brew direnv docker fzf gh git macos macOS nvm pod z)
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -130,9 +131,6 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 fi
 # End Nix
 
-# # devenv
-eval "$(direnv hook zsh)"
-
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
 [[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
@@ -143,4 +141,3 @@ eval "$(direnv hook zsh)"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
-

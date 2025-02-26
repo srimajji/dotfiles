@@ -7,8 +7,10 @@ flux
 font-hack-nerd-font
 font-jetbrains-mono
 font-jetbrains-mono-nerd-font
+jordanbaird-ice
+applite
+loop
 geekbench
-ghostty
 lm-studio
 notion
 raycast
@@ -19,3 +21,4 @@ visual-studio-code@insiders
 zen-browser@twilight
 tailscale
 windsurf
+session-manager-plugin
