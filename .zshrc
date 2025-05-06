@@ -5,6 +5,11 @@
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
 
+# bun completions
+# Needs to be sourced before exporting BUN_INSTALL
+# Bun Framework see ~/.path
+export BUN_INSTALL="$HOME/.bun"
+[ -s "/Users/thedragon/.bun/_bun" ] && source "/Users/thedragon/.bun/_bun"
 
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 ##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
@@ -141,3 +146,8 @@ fi
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/thedragon/.lmstudio/bin"
+# End of LM Studio CLI section
+
