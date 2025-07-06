@@ -23,12 +23,70 @@
 # SOFTWARE.
 
 
+# Install and configure FZF if it's in brew bins list
 [[ "${VAR_BREW_BINS[@]} " =~ " fzf " ]] && \
     $(brew --prefix)/opt/fzf/install --all
 
+# Install and configure NVM (Node Version Manager)
+if [[ "${VAR_BREW_BINS[@]} " =~ " nvm " ]]; then
+    echo "Setting up NVM..."
+    # Check if NVM is properly configured in .zshrc
+    if ! grep -q "opt/nvm/nvm.sh" ~/.zshrc; then
+        echo "Adding NVM configuration to .zshrc..."
+        cat >> ~/.zshrc << 'EOF'
 
-# Post-Installation for 
-[[ "${VAR_BREW_BINS[@]} " =~ " neovim " ]] && \
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs  \
-           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' && \
-    nvim +PlugInstall +qall
+# NVM setup
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+EOF
+    else
+        echo "NVM is already configured in .zshrc"
+    fi
+    
+    # Source NVM for the current session
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+    
+    # Install the latest LTS version of Node.js
+    echo "Installing latest Node.js LTS version..."
+    nvm install --lts
+    nvm use --lts
+    nvm alias default 'lts/*'
+    
+    echo "Node.js $(node -v) and npm $(npm -v) installed successfully."
+fi
+
+# Install and configure pyenv (Python Version Manager)
+if [[ "${VAR_BREW_BINS[@]} " =~ " pyenv " ]]; then
+    echo "Setting up pyenv..."
+    
+    # Check if pyenv is properly configured in .exports
+    if ! grep -q "PYENV_ROOT" ~/.exports; then
+        echo "Adding pyenv configuration to .exports..."
+        cat >> ~/.exports << 'EOF'
+
+# pyenv initialization
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+EOF
+    else
+        echo "pyenv is already configured in .exports"
+    fi
+    
+    # Set up pyenv for the current session
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    
+    # Install the latest stable Python version
+    echo "Installing latest stable Python version..."
+    # Get the latest Python version
+    latest_python=$(pyenv install --list | grep -v - | grep -v b | grep -v a | grep -v rc | grep -E '^  [0-9]+\.[0-9]+\.[0-9]+$' | tail -1 | sed 's/^  //')
+    
+    echo "Latest Python version: $latest_python"
+    pyenv install -s "$latest_python"
+    pyenv global "$latest_python"
+    
+    echo "Python $(python --version) installed successfully."
+fi

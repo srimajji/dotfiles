@@ -56,3 +56,7 @@ export PATH="/Users/thedragon/.codeium/windsurf/bin:$PATH"
 
 # Bun Framework
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/thedragon/.lmstudio/bin"
+

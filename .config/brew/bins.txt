@@ -1,10 +1,8 @@
 awscli
-composer
 deno
-screenpipe
+bun
 direnv
 fzf
-gh
 gh
 git
 neovim
@@ -16,3 +14,4 @@ pyenv
 watchman
 zsh
 zsh-syntax-highlighting
+zsh-autosuggestions
