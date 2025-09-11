@@ -1,7 +1,6 @@
 1password
 arc
 Discord
-docker
 figma
 flux
 font-hack-nerd-font
@@ -18,7 +17,6 @@ tailscale
 windsurf
 cursor
 lm-studio
-ollama
 leapp
 session-manager-plugin
-warp@preview
+warp
