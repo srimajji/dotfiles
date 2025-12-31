@@ -211,3 +211,6 @@ alias openports="lsof -i -n -P | grep LISTEN"
 # https://github.com/pyenv/pyenv/issues/106
 # alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
+alias pn=pnpm
+alias pdf2htmlex="podman run --rm -v '$(pwd):/workspace' -w /workspace localhost/pdf2htmlex:latest --semantic-tables 1"
+# alias docker=podman
