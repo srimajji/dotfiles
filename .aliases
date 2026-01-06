@@ -213,4 +213,11 @@ alias openports="lsof -i -n -P | grep LISTEN"
 
 alias pn=pnpm
 alias pdf2htmlex="podman run --rm -v '$(pwd):/workspace' -w /workspace localhost/pdf2htmlex:latest --semantic-tables 1"
-# alias docker=podman
+
+# devcontainer cli
+alias dcnvim="devcontainer exec --workspace-folder . nvim"
+alias dcreset="devcontainer up --workspace-folder . --remove-existing-container"
+alias dcrefresh="devcontainer up --workspace-folder ."
+
+# Granted assume
+alias assume=". assume"

@@ -22,8 +22,6 @@
 # SOFTWARE.
 
 
-# Default editor
-export EDITOR="/usr/local/bin/nvim"
 
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
@@ -96,7 +94,7 @@ export NVM_DIR="$HOME/.nvm"
 export NVIM_CONFIG_DIR="$HOME/.config/nvim"
 
 # Explicit set docker host
-export DOCKER_HOST="unix://$(podman machine inspect podman-machine-dev --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+# export DOCKER_HOST="unix://$(podman machine inspect podman-machine-dev --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
 
 # 1password ssh key agent
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock

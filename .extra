@@ -32,6 +32,6 @@ else # macOS `ls`
 fi
 
 # Change the PROMPT style to something like | (base) hades in ~ >
-export PROMPT='$(k__prompt_user_info) ~ %F{8}%2C%f $(k__prompt_git_info)$(k__prompt_check_node) %F{13}$%f '
-setopt promptsubst
+#export PROMPT='$(k__prompt_user_info) ~ %F{8}%2C%f $(k__prompt_git_info)$(k__prompt_check_node) %F{13}$%f '
+#setopt promptsubst
 
