@@ -1,36 +1,28 @@
+
+# Uncomment to profile the script
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
-# bun completions
-# Needs to be sourced before exporting BUN_INSTALL
-# Bun Framework see ~/.path
-export BUN_INSTALL="$HOME/.bun"
-[ -s "/Users/thedragon/.bun/_bun" ] && source "/Users/thedragon/.bun/_bun"
-
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+zstyle ':omz:plugins:nvm' lazy yes
+plugins=(brew direnv fzf gh git nvm z)
+ZSH_THEME="robbyrussell"
+
+# Load on-my-zsh
+source $ZSH/oh-my-zsh.sh
+
 # Load and source FZF configs
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# For eaiser management, configurations are seperated into multiple files
-# according to the function they perform. Therefore, first, they are loaded in
-# the shell.
 for file in ~/.{path,functions,exports,extra,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
@@ -97,13 +89,7 @@ unset file;
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 ## git clone https://github.com/matthieusb/zsh-sdkman.git ~/.oh-my-zsh/custom/plugins/zsh-sdkman
-plugins=(aws brew direnv docker fzf gh git macos macOS nvm pod z)
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
 
 
 # User configuration
@@ -134,20 +120,9 @@ ZSH_THEME="robbyrussell"
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
-# End Nix
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
-
-# eval "$(starship init zsh)"
-
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/oh-my-zsh.sh
 
 
+# zprof
