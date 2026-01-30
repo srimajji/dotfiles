@@ -1,128 +1,118 @@
+# ---------------------------------------------------------
+# 1. ENVIRONMENT & PATHS (Must be first)
+# ---------------------------------------------------------
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
-# Uncomment to profile the script
-# zmodload zsh/zprof
+# Load Homebrew paths if not already present (Mac specific)
+#if [[ -f /opt/homebrew/bin/brew ]]; then
+#  eval "$(/opt/homebrew/bin/brew shellenv)"
+#fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# ---------------------------------------------------------
+# 2. COMPLETION INITIALIZATION
+# ---------------------------------------------------------
+# Initialize completions AFTER paths are set so it finds Brew completions
+autoload -Uz compinit
+compinit -i  # The -i flag ignores insecure directories (common on Mac)
+
+# ---------------------------------------------------------
+# 3. ANTIDOTE PLUGIN MANAGER
+# ---------------------------------------------------------
+local antidote_path="${HOMEBREW_PREFIX}/opt/antidote/share/antidote/antidote.zsh"
+
+if [[ -f $antidote_path ]]; then
+  source "$antidote_path"
+  zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+  
+  # Regenerate if .txt is newer than .zsh
+  if [[ ! -f "${zsh_plugins}.zsh" || "${zsh_plugins}.txt" -nt "${zsh_plugins}.zsh" ]]; then
+    antidote bundle < "${zsh_plugins}.txt" >| "${zsh_plugins}.zsh"
+  fi
+  source "${zsh_plugins}.zsh"
 fi
 
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
+# ---------------------------------------------------------
+# 4. CUSTOM CONFIG & TOOLS
+# ---------------------------------------------------------
 zstyle ':omz:plugins:nvm' lazy yes
-plugins=(brew direnv fzf gh git nvm z)
-ZSH_THEME="robbyrussell"
 
-# Load on-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# Load and source FZF configs
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+# Load personal files
 for file in ~/.{path,functions,exports,extra,aliases}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
+  [[ -r "$file" ]] && source "$file"
+done
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Nix & Terminal Integrations
+[[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]] && . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+[[ $TERM_PROGRAM != "WarpTerminal" && -e "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# zsh-history-substring-search configuration
+bindkey '^[[A' history-substring-search-up # or '\eOA'
+bindkey '^[[B' history-substring-search-down # or '\eOB'
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+ # "If a completion is performed with the cursor within a word, and a
+  # full completion is inserted, the cursor is moved to the end of the
+  # word."
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#Completion-4
+setopt always_to_end
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+ # "If a command is issued that can’t be executed as a normal command,
+  # and the command is the name of a directory, perform the cd command
+  # to that directory."
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#Changing-Directories
+  #
+  # That is, enter a path to cd to i
+setopt auto_cd
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+ # "If unset, the cursor is set to the end of the word if completion is
+  # started. Otherwise it stays there and completion is done from both
+  # ends."
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#Completion-4
+setopt complete_in_word
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+  # "If the internal history needs to be trimmed to add the current
+  # command line, setting this option will cause the oldest history
+  # event that has a duplicate to be lost before losing a unique event
+  # from the list."
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#History
+setopt hist_expire_dups_first
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?s
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-## git clone https://github.com/matthieusb/zsh-sdkman.git ~/.oh-my-zsh/custom/plugins/zsh-sdkman
+  # "When searching for history entries in the line editor, do not
+  # display duplicates of a line previously found, even if the
+  # duplicates are not contiguous."
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#History
+setopt hist_find_no_dups
 
 
+  # "Remove command lines from the history list when the first character
+  # on the line is a space, or when one of the expanded aliases contains
+  # a leading space. Only normal aliases (not global or suffix aliases)
+  # have this behaviour. Note that the command lingers in the internal
+  # history until the next command is entered before it vanishes,
+  # allowing you to briefly reuse or edit the line. If you want to make
+  # it vanish right away without entering another command, type a space
+  # and press return."
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#History
+setopt hist_ignore_space
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Check ~/.aliases
-
-# Nix
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  # "Turns on interactive comments; comments begin with a #."
+  # https://zsh.sourceforge.io/Intro/intro_16.html
+  #
+  # That is, enable comments in the terminal. Nice when copying and
+  # pasting from documentation/tutorials, and disable part of
+  # a command pulled up from history.
+setopt interactivecomments  
 
 
-# zprof
+# ---------------------------------------------------------
+# 5. THEME (Must be last)
+# ---------------------------------------------------------
+eval "$(starship init zsh)"
+
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dragon/.lmstudio/bin"
+# End of LM Studio CLI section
+

@@ -21,7 +21,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
+# Maximum lines kept in memory
+export HISTSIZE=100000
+# Maximum lines saved to $HISTFILE
+export SAVEHIST=100000
 
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
@@ -62,7 +65,7 @@ export LC_ALL='en_US.UTF-8';
 export LESS_TERMCAP_md="${yellow}";
 
 # Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X';
+export MANPAGER="bat -plman"
 
 # Avoid issues with `gpg` as installed via Homebrew.
 # https://stackoverflow.com/a/42265848/96656
@@ -70,9 +73,6 @@ export GPG_TTY=$(tty);
 
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/thebear/.cache/lm-studio/bin"
 
 # Set java options
 export JAVA_OPTS=-Dstringchararrayaccessor.disabled=true
@@ -84,17 +84,9 @@ export AWS_PROFILE=default
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# Golang
-export GOPATH="$HOME/Documents/golang"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
-
 # Nvm
 export NVM_DIR="$HOME/.nvm"
-
-# NeoVim Config
 export NVIM_CONFIG_DIR="$HOME/.config/nvim"
-
-# Explicit set docker host
-# export DOCKER_HOST="unix://$(podman machine inspect podman-machine-dev --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
 
 # 1password ssh key agent
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -104,4 +96,7 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
 

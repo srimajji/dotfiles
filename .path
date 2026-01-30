@@ -14,3 +14,4 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 export PATH="$PATH:$HOME/.antigravity/antigravity/bin"
 
+export PATH="$PATH:$HOME/.local/bin"

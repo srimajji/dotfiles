@@ -1,6 +1,8 @@
 awscli
 deno
 bun
+bat
+eza
 devcontainer
 direnv
 fzf

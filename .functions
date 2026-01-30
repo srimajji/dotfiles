@@ -237,3 +237,23 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# Claude Code using Lite LLM - Studocu
+function liteClaude() {
+	export ANTHROPIC_AUTH_TOKEN=sk-TnNIWhBew9d5h6wkIubOZQ
+	export ANTHROPIC_BASE_URL=https://litellm.intranet.studocu.com
+	claude
+}
+
+# GPT Codex using LiteLLM - Studocu
+function liteCodex() {
+	export OPENAI_BASE_URL="https://litellm.intranet.studocu.com"
+	export OPENAI_API_KEY=sk-aIWXjXcFLjwKZjYWwXJAgw
+}
+
+function liteGemini() {
+  export GOOGLE_GEMINI_BASE_URL=https://litellm.intranet.studocu.com
+  export GEMINI_API_KEY=sk-TnNIWhBew9d5h6wkIubOZQ
+  gemini
+}
+
