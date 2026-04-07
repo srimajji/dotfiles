@@ -58,11 +58,11 @@ alias cbase="conda activate base"
 
 # Directory listing
 if command -v eza > /dev/null 2>&1; then
-	alias l="eza -lF --icons"
+	alias l="eza -l --icons"
 	alias la="eza -laF --icons"
 	alias lsd="eza -lF --icons --only-dirs"
 	alias lst="eza -T --icons"
-	alias ls="eza --icons"
+	alias ls="eza -l --icons"
 else
 	# Detect which `ls` flavor is in use
 	if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -213,6 +213,7 @@ alias pdf2htmlex="podman run --rm -v '$(pwd):/workspace' -w /workspace localhost
 
 # devcontainer cli
 alias dcnvim="devcontainer exec --workspace-folder . nvim"
+alias dcopencode="devcontainer exec --workspace-folder . opencode"
 alias dcreset="devcontainer up --workspace-folder . --remove-existing-container"
 alias dcrefresh="devcontainer up --workspace-folder ."
 
