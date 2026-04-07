@@ -60,9 +60,11 @@ git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout main
 
 If you have a new machine or wants to install your apps and libs, use the `setup` script to do an [Automated installation](#automated-installation).
 ```bash
-# this will install all your apps
-bash ~/setup
+# this will install all your apps (defaults to --new-machine)
+zsh ~/setup
 ```
+
+> **Note:** Use `zsh` (or `bash`) to run the setup script — do not use `sh`, as the script relies on features not available in a POSIX shell.
 
 Finally source the `.zshrc` or `.bashrc` by doing `source ~/.zshrc` and Voila! Thats it. 
 
@@ -113,7 +115,7 @@ dotfiles checkout work
 
 # Automated installation 
 
-The repository comes with a bash script (`setup`) to automate the installation of all the binaries and applications. Depending on the platform the setup file will changes for example - for macos it uses `brew` and for ubuntu it uses `snap` or `apt-get`. In any case open the `setup` file and update the code according to your needs.
+The repository comes with a zsh script (`setup`) to automate the installation of all the binaries and applications. Depending on the platform the setup file will change for example - for macos it uses `brew` and for ubuntu it uses `snap` or `apt-get`. In any case open the `setup` file and update the code according to your needs.
 
 ```
 curl -fsSL https://raw.githubusercontent.com/srimajji/dotfiles/main/setup | zsh -s -- --new-machine
