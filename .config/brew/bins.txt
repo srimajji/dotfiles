@@ -14,7 +14,8 @@ nvm
 openssl
 php
 pyenv
+startship
 watchman
 zsh
-zsh-syntax-highlighting
-zsh-autosuggestions
+antidote
+

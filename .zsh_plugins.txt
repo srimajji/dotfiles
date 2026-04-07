@@ -1,0 +1,25 @@
+# 1. Essential OMZ Libraries (Instead of loading the whole 'lib' folder)
+ohmyzsh/ohmyzsh path:lib/functions.zsh
+ohmyzsh/ohmyzsh path:lib/completion.zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+# 2. Version Managers (OMZ Plugins)
+# lukechilds/zsh-nvm
+ohmyzsh/ohmyzsh path:plugins/nvm
+ohmyzsh/ohmyzsh path:plugins/pyenv
+
+# 3. Productivity & Tools
+# ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/z
+
+# 4. Performance & Highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-completions
+
+# 5. Zsh Utils
+Aloxaf/fzf-tab
