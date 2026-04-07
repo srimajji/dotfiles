@@ -1,0 +1,7 @@
+
+font-family = "JetBrainsMonoNL Nerd Font Mono"
+theme = dark:Arthur,light:Raycast Light
+background-opacity = 0.98
+background-blur = macos-glass-clear
+window-save-state = always
+
