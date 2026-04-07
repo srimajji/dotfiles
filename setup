@@ -41,6 +41,12 @@ Description: This script is a part of kalkayan's development distribution. The
              append your url to the list.
 "
 
+# Ensure this script runs under zsh or bash, not plain sh. POSIX sh does not
+# support arrays or [[ ]] which are used throughout the setup scripts.
+if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
+    exec zsh "$0" "$@"
+fi
+
 # Load the variables in the current from the local vars.sh file if present under
 # config otherwise read from the fallback file at github.
 [ -f $HOME/.config/zsh/vars.sh  ] && source $HOME/.config/zsh/vars.sh  \
@@ -51,6 +57,13 @@ Description: This script is a part of kalkayan's development distribution. The
 # installation code is written) otherwise read them from the fallback file.
 [ -f $HOME/.config/zsh/utils.sh ] && source $HOME/.config/zsh/utils.sh \
                                   || source /dev/stdin <<< "$(curl https://raw.githubusercontent.com/srimajji/dotfiles/main/.config/zsh/utils.sh)"
+
+
+# Default to --new-machine when no arguments are provided so that running
+# "bash ~/setup" or "zsh ~/setup" performs the full setup sequence.
+if [ $# -eq 0 ]; then
+    set -- "$OPT_SETUP_NEW"
+fi
 
 
 # Print the script banner
