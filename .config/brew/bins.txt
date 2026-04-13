@@ -14,8 +14,9 @@ nvm
 openssl
 php
 pyenv
-startship
+starship
 watchman
 zsh
 antidote
+anomalyco/tap/opencode
 

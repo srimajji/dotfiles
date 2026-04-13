@@ -1,7 +1,20 @@
 
 font-family = "JetBrainsMonoNL Nerd Font Mono"
-theme = dark:Arthur,light:Raycast Light
+font-size = 13
+theme = dark:Arthur, light:"Monokai Pro Light"
 background-opacity = 0.98
-background-blur = macos-glass-clear
+background-blur-radius = 20
 window-save-state = always
+scrollback-limit = 50000
+window-decoration = false
+macos-option-as-alt = true
+working-directory = /Volumes/Dev
+
+# Window
+window-padding-x = 0
+window-padding-y = 0
+background-opacity = 1.00
+unfocused-split-opacity = 0.85
+split-divider-size = 1
+
 
